@@ -26,13 +26,13 @@ const[isLoading, setLoading] = useState(true);
 //state to hold the actual data
 const[data, setData] = useState();
 
-useEffect = () =>{
+useEffect(() =>{
   fetch(boredAPIURL)
   .then((response)=>response.json())
   .then((json)=>setData(json.activity))
   .catch((error)=>alert(error))
   .finally(setLoading(false));
-}
+});
 
 const handleAddTask = () =>{
   Keyboard.dismiss();

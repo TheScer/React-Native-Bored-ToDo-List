@@ -8,18 +8,31 @@ import {
   Platform,
   TouchableOpacity,
   Keyboard,
-  ActivityIndicator,
-  SafeAreaView,
-  Flatlist} from 'react-native';
+  ActivityIndicator,} from 'react-native';
 import Task from './components/Task'
+
+//api URL endpoint
+const boredAPIURL='https://www.boredapi.com/api/activity/'
 
 export default function App() {
   //the "task in the parameter is the name of the state in this case to track the task"
   //"the 2nd parameter is the function used to track the state"
 const [task, setTask] = useState();
 //"we use state for things that change often in our program"
-
 const[taskItems, setTaskItems] = useState([]);
+
+//state for loading data from the API
+const[isLoading, setLoading] = useState(true);
+//state to hold the actual data
+const[data, setData] = useState();
+
+useEffect = () =>{
+  fetch(boredAPIURL)
+  .then((response)=>response.json())
+  .then((json)=>setData(json.activity))
+  .catch((error)=>alert(error))
+  .finally(setLoading(false));
+}
 
 const handleAddTask = () =>{
   Keyboard.dismiss();
@@ -69,6 +82,13 @@ const completeTask = (index) => {
             <Text style={styles.addText}>+</Text>
           </View>
         </TouchableOpacity>
+
+        <TouchableOpacity onPress={() => handleAddTask()}>
+          <View style={styles.addWrapper}>
+            <Text style={styles.addText}>!+!</Text>
+          </View>
+        </TouchableOpacity>
+    
     </KeyboardAvoidingView>
 
   </View>

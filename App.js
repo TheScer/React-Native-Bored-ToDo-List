@@ -30,6 +30,7 @@ useEffect(() =>{
   fetch(boredAPIURL)
   .then((response)=>response.json())
   .then((json)=>setData(json.activity))
+  .then(console.log(data))
   .catch((error)=>alert(error))
   .finally(setLoading(false));
 });
@@ -38,6 +39,12 @@ const handleAddTask = () =>{
   Keyboard.dismiss();
   console.log(task);
   setTaskItems([...taskItems,task])
+  setTask(null);
+}
+
+const handleRandTask = () =>{
+  console.log(data);
+  setTaskItems([...taskItems,data])
   setTask(null);
 }
 
@@ -83,7 +90,7 @@ const completeTask = (index) => {
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => handleAddTask()}>
+        <TouchableOpacity onPress={() => handleRandTask()}>
           <View style={styles.addWrapper}>
             <Text style={styles.addText}>!+!</Text>
           </View>

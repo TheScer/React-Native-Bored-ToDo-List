@@ -84,13 +84,13 @@ const completeTask = (index) => {
     
       <TextInput style={styles.input} placeholder={'write a task'} value={task} onChangeText={text=> setTask(text)} />
 
-        <TouchableOpacity onPress={() => handleAddTask()}>
+        <TouchableOpacity onPress={() => setTimeout(handleAddTask(), 20000)}>
           <View style={styles.addWrapper}>
             <Text style={styles.addText}>+</Text>
           </View>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={() => handleRandTask()}>
+        <TouchableOpacity onPress={() => setTimeout(handleRandTask(), 20000)}>
           <View style={styles.addWrapper}>
             <Text style={styles.addText}>!+!</Text>
           </View>

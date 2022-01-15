@@ -9,7 +9,11 @@ import {
   TouchableOpacity,
   Keyboard,
   ActivityIndicator,} from 'react-native';
-import Task from './components/Task'
+import Task from './components/Task';
+import History from './History.js';
+//import Navbar from '/Navbar.js';
+import {BrowserRouter} from 'react-router-dom'
+import {Route, Link} from "react-router-dom"
 
 //api URL endpoint
 const boredAPIURL='https://www.boredapi.com/api/activity/'
@@ -55,6 +59,8 @@ const completeTask = (index) => {
 }
 
   return (
+    <BrowserRouter>
+    <Route exact path="/" component={History} />
   <View style={styles.container}>
 
     {/*today's tasks */}
@@ -99,6 +105,7 @@ const completeTask = (index) => {
     </KeyboardAvoidingView>
 
   </View>
+  </BrowserRouter>
   );
 }
 

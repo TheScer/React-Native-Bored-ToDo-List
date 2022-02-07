@@ -27,12 +27,14 @@ const[isLoading, setLoading] = useState(true);
 const[data, setData] = useState();
 
 useEffect(() =>{
-  fetch(boredAPIURL)
-  .then((response)=>response.json())
-  .then((json)=>setData(json.activity))
-  .then(console.log(data))
-  .catch((error)=>alert(error))
-  .finally(setLoading(false));
+  if(setLoading==true){
+    fetch(boredAPIURL)
+    .then((response)=>response.json())
+    .then((json)=>setData(json.activity))
+    .then(console.log(data))
+    .catch((error)=>alert(error))
+    .finally(setLoading(false));
+  }
 });
 
 const handleAddTask = () =>{
@@ -43,6 +45,7 @@ const handleAddTask = () =>{
 }
 
 const handleRandTask = () =>{
+  setLoading=true;
   console.log(data);
   setTaskItems([...taskItems,data])
   setTask(null);

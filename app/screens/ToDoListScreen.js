@@ -9,12 +9,12 @@ import {
   TouchableOpacity,
   Keyboard,
   ActivityIndicator,} from 'react-native';
-import Task from '../components/Task'
+import Task from '../../components/Task'
 
 //api URL endpoint
 const boredAPIURL='https://www.boredapi.com/api/activity/'
 
-export default function App() {
+function ToDoListScreen() {
   //the "task in the parameter is the name of the state in this case to track the task"
   //"the 2nd parameter is the function used to track the state"
 const [task, setTask] = useState();
@@ -151,3 +151,5 @@ const completeTask = (index) => {
   } ,
   addText:{} ,
 });
+
+export default ToDoListScreen

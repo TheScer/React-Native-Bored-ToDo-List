@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   Keyboard,
   ActivityIndicator,} from 'react-native';
-import Task from './components/Task'
+import Task from '../components/Task'
 
 //api URL endpoint
 const boredAPIURL='https://www.boredapi.com/api/activity/'

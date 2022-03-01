@@ -11,10 +11,10 @@ import {
   ActivityIndicator,} from 'react-native';
 //import ReactDOM from 
 import Task from './components/Task';
-import History from './History.js';
+//import History from './History.js';
 //import Navbar from './Navbar.js';
-import {BrowserRouter} from 'react-router-dom'
-import {Route, Link} from "react-router-dom"
+//import {BrowserRouter} from 'react-router-dom'
+//import {Route, Link} from "react-router-dom"
 
 //api URL endpoint
 const boredAPIURL='https://www.boredapi.com/api/activity/'
@@ -48,6 +48,7 @@ const handleAddTask = () =>{
 }
 
 const handleRandTask = () =>{
+  
   console.log(data);
   setTaskItems([...taskItems,data])
   setTask(null);

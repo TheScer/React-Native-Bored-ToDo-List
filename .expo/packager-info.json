@@ -1,10 +1,10 @@
 {
   "webpackServerPort": null,
-  "expoServerPort": null,
+  "expoServerPort": 19000,
   "devToolsPort": 19002,
-  "packagerPort": null,
+  "packagerPort": 19000,
   "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerNgrokUrl": "https://7m-ds5.thescer.new-react-native-todo-list.exp.direct",
+  "packagerNgrokUrl": "https://packager.7m-ds5.thescer.new-react-native-todo-list.exp.direct",
+  "ngrokPid": 17976
 }

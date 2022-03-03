@@ -87,7 +87,6 @@ function Home() {
         behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTaskWrapper}
       >
-        {/* FIXING STARTS HERE, ADDED ADD TASKS HERE */}
         <TextInput
           style={styles.input}
           placeholder={"write a task"}
@@ -107,7 +106,6 @@ function Home() {
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
-      {/* FIXING ENDS HERE, ADDED ADD TASKS HERE */}
 
       <Button
         onPress={() => navigation.navigate("History")}
@@ -116,8 +114,6 @@ function Home() {
     </View>
   );
 }
-
-//ADDED STYLE SHEETS CAUSE THEY DISAPPEAREDDDD
 
 const styles = StyleSheet.create({
   container: {
@@ -164,7 +160,5 @@ const styles = StyleSheet.create({
   },
   addText: {},
 });
-
-//END OF ADDING STYLE SHEETS CAUSE THEY DISAPPEAREDDDD
 
 export default Home;

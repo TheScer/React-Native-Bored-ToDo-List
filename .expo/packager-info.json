@@ -4,7 +4,7 @@
   "devToolsPort": 19002,
   "packagerPort": 19000,
   "packagerPid": null,
-  "expoServerNgrokUrl": "https://7m-ds5.thescer.new-react-native-todo-list.exp.direct",
-  "packagerNgrokUrl": "https://packager.7m-ds5.thescer.new-react-native-todo-list.exp.direct",
-  "ngrokPid": 17976
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }

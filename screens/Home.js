@@ -10,15 +10,15 @@ import {
   Keyboard,
   ActivityIndicator,
   Button,
+  ScrollView,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import styles from "../Styles";
 
 //import ReactDOM from
 import Task from "../components/Task";
 //import History from './History.js';
 //import Navbar from './Navbar.js';
-//import {BrowserRouter} from 'react-router-dom'
-//import {Route, Link} from "react-router-dom"
 
 //api URL endpoint
 const boredAPIURL = "https://www.boredapi.com/api/activity/";
@@ -31,6 +31,10 @@ function Home() {
   const [task, setTask] = useState();
   //"we use state for things that change often in our program"
   const [taskItems, setTaskItems] = useState([]);
+
+  //these will be used for building an array of the completed tasks
+  const [completeTheTask, setCompleteTask] = useState();
+  const [CompletedItems, setCompletedItems] = useState([]);
 
   //state for loading data from the API
   const [isLoading, setLoading] = useState(true);
@@ -54,12 +58,18 @@ function Home() {
   const handleRandTask = () => {
     console.log(data);
     setTaskItems([...taskItems, data]);
+    //console.log([...taskItems]);
     setTask(null);
   };
 
   const completeTask = (index) => {
     let itemsCopy = [...taskItems];
-    itemsCopy.splice(index, 1);
+    let splicedItem = itemsCopy.splice(index, 1);
+    setCompleteTask(splicedItem);
+    //the next 2 lines make an array of removed tasks to be passed to the history page
+    setCompletedItems([...CompletedItems, completeTheTask]);
+    console.log([...CompletedItems]);
+    //itemsCopy.splice(index, 1);
     setTaskItems(itemsCopy);
   };
 
@@ -67,9 +77,13 @@ function Home() {
     <View style={styles.container}>
       {/*today's tasks */}
       <View style={styles.tasksWrapper}>
+        <Button
+          onPress={() => navigation.navigate("History")}
+          title="go to History screen!"
+        />
         <Text style={styles.sectionTitle}>Today's Tasks</Text>
 
-        <View style={styles.items}>
+        <ScrollView style={styles.items}>
           {/*this is where the tasks will go*/}
           {taskItems.map((item, index) => {
             return (
@@ -79,7 +93,7 @@ function Home() {
               </TouchableOpacity>
             );
           })}
-        </View>
+        </ScrollView>
       </View>
 
       {/*add a task */}
@@ -106,59 +120,8 @@ function Home() {
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
-
-      <Button
-        onPress={() => navigation.navigate("History")}
-        title="go to History screen!"
-      />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#bebebe",
-  },
-  tasksWrapper: {
-    paddingTop: 80,
-    paddingHorizontal: 20,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  items: {
-    marginTop: 30,
-  },
-  writeTaskWrapper: {
-    position: "absolute",
-    bottom: 60,
-    width: "100%",
-    flexDirection: "row",
-    justifyContent: "space-around",
-    alignItems: "center",
-  },
-  input: {
-    paddingVertical: 15,
-    paddingHorizontal: 15,
-    backgroundColor: "#FFF",
-    borderRadius: 60,
-    borderColor: "#C0C0C0",
-    borderWidth: 1,
-    width: 250,
-  },
-  addWrapper: {
-    width: 60,
-    height: 60,
-    backgroundColor: "#FFF",
-    borderRadius: 60,
-    justifyContent: "center",
-    alignItems: "center",
-    borderColor: "#C0C0C0",
-    borderWidth: 1,
-  },
-  addText: {},
-});
 
 export default Home;

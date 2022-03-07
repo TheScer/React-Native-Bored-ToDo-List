@@ -29,7 +29,7 @@ const History = ({ navigation, route }) => {
   //CompletedItems but its not working as well as my
   //historyList array so we gonna try using that again
 
-  let historyList = route.params;
+  const historyList = route.params;
   historyList.params.shift();
   //console.log("historyList.params: ");
   //console.log(historyList.params);
@@ -56,10 +56,7 @@ const History = ({ navigation, route }) => {
   return (
     <View>
       <View style={styles.tasksWrapper}>
-        <Button
-          title="create History:"
-          onPress={() => createHistoryTaskList()}
-        />
+        <Button title="Show History:" onPress={() => createHistoryTaskList()} />
         <Text style={styles.sectionTitle}>History</Text>
 
         <ScrollView style={styles.items}>
@@ -68,7 +65,9 @@ const History = ({ navigation, route }) => {
             return (
               //<Task key={index}  text={item}/>
               //onPress not exactly needed here unless to completely remove a task from history
-              <TouchableOpacity key={index} onPress={() => completeTask(index)}>
+              <TouchableOpacity
+                key={index} /*onPress={() => completeTask(index)}*/
+              >
                 <Task text={item} />
               </TouchableOpacity>
             );

@@ -1,0 +1,11 @@
+FIRST PAGE
+
+value={userName}
+          onChangeText={(username) => setUserName(username)}
+
+navigation.navigate('SecondPage', {
+              paramKey: userName,
+            })
+
+SECOND PAGE
+

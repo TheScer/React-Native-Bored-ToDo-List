@@ -50,25 +50,33 @@ function Home() {
 
   const handleAddTask = () => {
     Keyboard.dismiss();
-    console.log(task);
+    //console.log(task);
     setTaskItems([...taskItems, task]);
+    //console.log([...taskItems]);
+
     setTask(null);
   };
 
   const handleRandTask = () => {
-    console.log(data);
+    //console.log(data);
     setTaskItems([...taskItems, data]);
     //console.log([...taskItems]);
     setTask(null);
   };
 
-  const completeTask = (index) => {
+  const completeTask = async (index) => {
     let itemsCopy = [...taskItems];
     let splicedItem = itemsCopy.splice(index, 1);
-    setCompleteTask(splicedItem);
+    //console.log("spliced item:");
+    //console.log(splicedItem);
+    setCompleteTask(splicedItem[0]);
+    //console.log(splicedItem[0]);
+    //console.log("completetheTask:");
+    //console.log(completeTheTask);
     //the next 2 lines make an array of removed tasks to be passed to the history page
     setCompletedItems([...CompletedItems, completeTheTask]);
-    console.log([...CompletedItems]);
+    //console.log("full history array");
+    //console.log([...CompletedItems]);
     //itemsCopy.splice(index, 1);
     setTaskItems(itemsCopy);
   };
@@ -78,7 +86,9 @@ function Home() {
       {/*today's tasks */}
       <View style={styles.tasksWrapper}>
         <Button
-          onPress={() => navigation.navigate("History")}
+          onPress={() =>
+            navigation.navigate("History", { params: CompletedItems })
+          }
           title="go to History screen!"
         />
         <Text style={styles.sectionTitle}>Today's Tasks</Text>

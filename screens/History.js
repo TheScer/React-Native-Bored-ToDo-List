@@ -65,11 +65,9 @@ const History = ({ navigation, route }) => {
             return (
               //<Task key={index}  text={item}/>
               //onPress not exactly needed here unless to completely remove a task from history
-              <TouchableOpacity
-                key={index} /*onPress={() => completeTask(index)}*/
-              >
+              <View key={index} /*onPress={() => completeTask(index)}*/>
                 <Task text={item} />
-              </TouchableOpacity>
+              </View>
             );
           })}
         </ScrollView>
